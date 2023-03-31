@@ -1,5 +1,5 @@
 from models import Position, Employee, Skill, SkillPerEmployee
-from connection import Session_factory
+from models import Session_factory
 
 # insert dummy positions
 positions = [

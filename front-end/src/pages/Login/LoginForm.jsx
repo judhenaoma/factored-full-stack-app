@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './login.css';
 
 function LoginForm( {setCredentials, setLoggedIn } ) {
     
@@ -22,6 +23,7 @@ function LoginForm( {setCredentials, setLoggedIn } ) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setError('');
+    // The backend is expecting a form data object
     let formFormat = new FormData();
     formFormat.append('email', fields.email);
     formFormat.append('password', fields.password);
@@ -29,7 +31,7 @@ function LoginForm( {setCredentials, setLoggedIn } ) {
       .then((response) => {
         if(response.data.authorized === true){
             setLoggedIn(true);
-            setCredentials(fields);
+            setCredentials(...fields, response.data.id);
             console.log("Logged in")        
         } else {
           setError('Invalid credentials');
@@ -40,8 +42,6 @@ function LoginForm( {setCredentials, setLoggedIn } ) {
       })
   }
 
-  
-    
   return (
     <form method='POST' onSubmit={handleSubmit} id="login_form" >
       <div className="form__field">

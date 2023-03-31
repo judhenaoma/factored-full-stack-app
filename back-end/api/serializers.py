@@ -12,3 +12,12 @@ class Employee(BaseModel):
 
     class Config:
         orm_mode = True
+
+class SkillPerEmployee(BaseModel):
+    id: int
+    employee_id: str
+    skill_id: int
+    profiency_level: int
+
+    class Config:
+        orm_mode = True

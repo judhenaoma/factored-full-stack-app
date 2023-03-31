@@ -1,7 +1,20 @@
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 from sqlalchemy.orm import declarative_base
-from .connection import engine
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+DATABASE_URL = os.environ.get('DATABASE_URL')
+
+# create the root object to connect to the db
+engine = create_engine(DATABASE_URL, echo=True)
+# create the instance to build sessions 
+Session_factory = sessionmaker(bind=engine)
+
+
 
 # create the base class for the models
 Base = declarative_base()
