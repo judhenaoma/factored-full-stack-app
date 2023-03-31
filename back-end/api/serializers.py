@@ -1,12 +1,5 @@
 from pydantic import BaseModel
 
-class Position(BaseModel):
-    id: int
-    position_name: str
-
-    class Config:
-        orm_mode = True
-
 class Employee(BaseModel):
     id: str
     email: str
@@ -19,7 +12,3 @@ class Employee(BaseModel):
 
     class Config:
         orm_mode = True
-
-class Login(BaseModel):
-    id: str
-    password: str

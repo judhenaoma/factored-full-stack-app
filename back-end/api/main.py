@@ -6,7 +6,7 @@ from serializers import Employee, Login
 app = FastAPI()
 api_session = Session_factory()
 
-@app.get("/profile/{id_}", response_model=Employee, status_code=status.HTTP_200_OK)
+@app.get("/employee-detail/{id_}", response_model=Employee, status_code=status.HTTP_200_OK)
 def get_profile(id_: str):
     employee_data = api_session.query(models.Employee).filter(models.Employee.id==id_).first()
     return employee_data
