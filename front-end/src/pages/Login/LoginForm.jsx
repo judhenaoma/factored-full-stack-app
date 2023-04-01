@@ -2,15 +2,12 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './login.css';
 
+
 function LoginForm( {setCredentials, setLoggedIn } ) {
     
-  const [fields, setFields] = useState({
-    email: '',
-    password: ''
-    });
-  
+  const [fields, setFields] = useState({email: '', password: ''});
   const [error, setError] = useState('')
-
+  // Handle when the user types in the form
   const handleChange = (e) => {
     setFields({
         ...fields,
@@ -19,7 +16,7 @@ function LoginForm( {setCredentials, setLoggedIn } ) {
     console.log(e.target.value)
   }
 
-
+  // Handle the login form submission and check credentials
   const handleSubmit = (e) => {
     e.preventDefault();
     setError('');
@@ -29,17 +26,14 @@ function LoginForm( {setCredentials, setLoggedIn } ) {
     formFormat.append('password', fields.password);
     axios.post('http://localhost:8000/login/', formFormat)
       .then((response) => {
-        if(response.data.authorized === true){
+        const { data } = response;	
+        if(data.authorized === true){
             setLoggedIn(true);
-            setCredentials(...fields, response.data.id);
-            console.log("Logged in")        
-        } else {
-          setError('Invalid credentials');
-        }
+            setCredentials({...fields, id: data.id});      
+        } 
+        setError('Invalid credentials');
       })
-      .catch((error) => {
-        setError('Error logging in');
-      })
+      .catch((error) => setError('Error logging in'))
   }
 
   return (

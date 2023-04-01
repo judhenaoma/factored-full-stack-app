@@ -1,17 +1,11 @@
-import React from "react";
-import { useRouteError } from "react-router-dom";
+import React from 'react';
 
-function ErrorPage() {
-  const error = useRouteError();
+function NotFoundPage() {
   return (
     <div>
-     <h1>Oops!</h1>
-      <p>An unexpected error has occurred.</p>
-      <p>
-        <i>{error.statusText || error.message}</i>
-      </p>
+      <h1>404 - Page Not Found!</h1>
     </div>
   );
 }
 
-export {ErrorPage};
+export { NotFoundPage };

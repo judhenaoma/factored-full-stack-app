@@ -27,9 +27,10 @@ def get_profile(id_: str):
     employee_data = api_session.query(EmployeeModel).filter(EmployeeModel.id==id_).first()
     position_id = employee_data.position_id
     position = api_session.query(PositionModel.position_name).filter(PositionModel.id==position_id).first()
-    employee_data.position_id = position[0]
+    employee_position = position[0]
     print(type(position))
-    return {"employee_data": employee_data}
+    return {"employee_data": employee_data, 
+            "employee_position" : employee_position}
 
 # check authorization for employee login
 @app.post("/login/")
