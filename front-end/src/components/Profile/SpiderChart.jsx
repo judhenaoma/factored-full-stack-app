@@ -18,8 +18,6 @@ import {
     Legend
   );
 
-  
-
   var options = {
     responsive: true,
     scale: {
@@ -30,12 +28,12 @@ import {
         }
     }
 };
-function SpiderChar({skills, profiencyLevel}) {
+function SpiderChart({skills, profiencyLevel}) {
     const data = {
         labels: skills,
         datasets: [
           {
-            label: 'Employee Skills',
+            label: `Your Skills`,
             data: profiencyLevel,
             backgroundColor: 'rgba(62,188,200,0.4)',
             borderColor: 'rgba(62,188,200,0.4)',
@@ -46,4 +44,4 @@ function SpiderChar({skills, profiencyLevel}) {
     return <Radar data={data} options={options}/>;
   }
 
-export { SpiderChar }
+export { SpiderChart }

@@ -4,9 +4,11 @@ import './login.css';
 
 
 function LoginForm( {setCredentials, setLoggedIn } ) {
-    
+  
+  // Login state
   const [fields, setFields] = useState({email: '', password: ''});
   const [error, setError] = useState('')
+
   // Handle when the user types in the form
   const handleChange = (e) => {
     setFields({
@@ -26,11 +28,13 @@ function LoginForm( {setCredentials, setLoggedIn } ) {
     formFormat.append('password', fields.password);
     axios.post('http://localhost:8000/login/', formFormat)
       .then((response) => {
-        const { data } = response;	
+        const { data } = response;
+        console.log(data)	
         if(data.authorized === true){
             setLoggedIn(true);
-            setCredentials({...fields, id: data.id});      
-        } 
+            setCredentials({...fields, id: data.id});
+            localStorage.setItem('FactoredSession', JSON.stringify(data.id) );      
+        }
         setError('Invalid credentials');
       })
       .catch((error) => setError('Error logging in'))
