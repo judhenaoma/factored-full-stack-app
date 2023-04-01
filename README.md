@@ -17,3 +17,6 @@ Here are some credentials to access the application:
 | anamaria123@factored.com   | pass1234          |
 | marcosmith@factored.com   | pass12345          |
 
+Some notes:
+
+The files located in back-end/db: models., and insertion.py are responsible for creating the database in SQLAlchemy. They were used to build the database that is currently connected remotely. You can create the database by running python models.py and python insertion.py in an empty database locally.
