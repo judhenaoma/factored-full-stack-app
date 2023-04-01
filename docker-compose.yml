@@ -1,0 +1,32 @@
+version: '3.7'
+
+services:
+  frontend:
+    build:
+      context: ./front-end 
+      dockerfile: Dockerfile
+    depends_on:
+      - backend
+    ports:
+      - 3000:5173
+  backend:
+    build:
+      context: ./back-end 
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
+    # depends_on:
+    #   - db
+    
+    
+  # db:
+  #   image: postgres:latest
+  #   restart: always
+  #   container_name: factored_db
+  #   environment:
+  #     POSTGRES_USER: factored
+  #     POSTGRES_PASSWORD: pass123
+  #     POSTGRES_DB: postgres
+      
+  #   ports:
+  #     - 8090:5432

@@ -10,10 +10,17 @@ from fastapi.encoders import jsonable_encoder
 
 app = FastAPI()
 
+origins = [
+    "http://localhost",
+    "http://localhost:3000",
+    "http://localhost:3080"
+
+]
+
 # Configure CORS to allow fe integration
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -47,3 +54,5 @@ def get_skills(id_: str):
     skills = api_session.query(SkillPerEmployeeModel.profiency_level,SkillModel.skill_name).join(SkillModel).filter(SkillPerEmployeeModel.employee_id==id_).all()
     dict_data = dict(map(lambda x: (x[1], x[0]), skills))
     return {"skills": dict_data}
+
+
