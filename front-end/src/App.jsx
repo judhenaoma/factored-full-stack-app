@@ -5,7 +5,6 @@ import { LoginPage } from './components/Login/LoginPage'
 import { Routes, Route } from 'react-router-dom';
 import { Profile } from './components/Profile/Profile';
 import { Redirect } from './components/utils/Redirect';
-import { ErrorPage } from './components/Error/ErrorPage';
 import { NotFoundPage } from './components/NotFound/NotFoundPage';
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
@@ -42,11 +41,10 @@ function App() {
 
 
   return (
-    <div>
+    <div id='App' className='backgroundImg'>
       <Routes>
         <Route path="/" 
                element={ <Redirect to="/login" />}
-               errorElement={<ErrorPage/>} 
         />  
         <Route path="login" 
                element=
@@ -55,11 +53,9 @@ function App() {
                     <LoginForm setCredentials={setCredentials} setLoggedIn= {setLoggedIn}  />
                   </LoginPage>
                 }
-               errorElement={<ErrorPage/>} 
         />
         <Route path="profile" 
             element={ loggedIn && <Profile employeeID={credentials.id} setLoggedIn={setLoggedIn} />}
-            errorElement={<ErrorPage/>} 
                 
         />
         <Route path="*" 

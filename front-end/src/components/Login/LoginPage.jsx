@@ -7,11 +7,10 @@ function LoginPage({setCredentials, setLoggedIn, children }) {
   return (
     <div id='login'>
         <div id='login__content'>
-            <div id='login__content__logo'>
-                <img src={factoredLogo} alt='Factored Logo' />  
+            <div>
+                <img className='login__content-logo' src={factoredLogo} alt='Factored Logo' />  
             </div>
             <div id='login__content__form'>
-                {/* <LoginForm setCredentials={setCredentials} setLoggedIn= {setLoggedIn}  /> */}
                 {children}
             </div>    
         </div>
