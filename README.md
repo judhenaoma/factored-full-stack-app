@@ -1,4 +1,4 @@
-# Factored Technical Assessment
+# Factored
 To run the application locally, Docker and Docker Compose must be installed. It can be downloaded for Windows from [docker](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=dd-smartbutton&utm_location=module).
 
 Once Docker is installed, you must clone the repository. If you have git installed, run the command git clone https://github.com/judhenaoma/factored-technical-assessment.git. Otherwise, access the link above and click on Code > Download ZIP, extract the files and navigate to the root of the extracted folder using the Windows command prompt cmd. Then execute the following commands in order:
